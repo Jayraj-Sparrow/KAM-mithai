@@ -106,7 +106,7 @@ section{padding:clamp(64px,10vw,140px) max(5vw,18px)}
 .unbox .ph.empty~.unbox-copy{color:var(--ink);text-shadow:none}
 .unbox .ph.empty .art{left:auto;right:0;width:62%}
 @media(max-width:760px){.unbox .ph.empty .art{width:100%;height:60%}}
-.unbox .ph.fill img{object-position:50% 62%;transform:scale(var(--zs,1.12))}
+.unbox .ph.fill img{object-position:50% 52%;transform:scale(var(--zs,1.12))}
 
 /* collection */
 .collection{max-width:1440px;margin:0 auto}
