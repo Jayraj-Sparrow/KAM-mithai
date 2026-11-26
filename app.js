@@ -188,19 +188,30 @@ $('bulkForm').addEventListener('submit', e => {
 });
 $('bulkDate').min = new Date(Date.now() + 7 * 864e5).toISOString().slice(0, 10);
 
-/* ---------- Spot the Sugar ---------- */
-let round = 0, score = 0, answer = 0;
-const plates = [...document.querySelectorAll('.plate')];
-function newRound() { answer = Math.random() < 0.5 ? 0 : 1; plates.forEach(p => { p.disabled = false; p.classList.remove('right', 'wrong'); }); $('gameMsg').textContent = `Round ${round + 1} of 3. Which one is ours?`; }
-plates.forEach(p => p.addEventListener('click', () => {
-  if (p.disabled) return;
-  const ok = +p.dataset.p === answer; if (ok) score += 1; round += 1;
-  plates.forEach(x => x.disabled = true); plates[answer].classList.add('right'); if (!ok) p.classList.add('wrong');
-  if (round < 3) { $('gameMsg').textContent = ok ? 'Right. Lucky guess?' : 'That one had sugar.'; setTimeout(newRound, 1100); }
-  else $('gameMsg').textContent = `You got ${score} of 3. ${score === 3 ? 'Impressive, but a coin gets there 1 time in 8.' : 'About what a coin toss gets.'} Now try it with real pieces.`;
+/* ---------- blind test ---------- */
+const hots = [...document.querySelectorAll('.hot')];
+hots.forEach(b => b.addEventListener('click', () => {
+  hots.forEach(x => x.classList.toggle('on', x === b));
+  $('btLede').textContent = `Plate ${b.dataset.pick}? Honestly, nobody can tell from a photo, and most people can't tell from a bite either. Try it for real with a kit.`;
 }));
-$('gameReset').addEventListener('click', () => { round = 0; score = 0; newRound(); });
-newRound(); drawSizes(); drawCart();
+$('kitBtn').addEventListener('click', () => {
+  addLine({ key: 'kit', name: 'Blind test kit', detail: '2 unmarked pieces + sealed answer card', price: 99, qty: 1 });
+  $('kitMsg').textContent = 'Added to cart.';
+});
+$('btForm').addEventListener('submit', e => {
+  e.preventDefault();
+  const code = $('btCode').value.trim().toUpperCase().replace(/\s/g, '');
+  const pick = (document.querySelector('input[name=guess]:checked') || {}).value;
+  const out = $('btResult');
+  if (!/^TS-?\d{4}$/.test(code)) { out.textContent = 'Kit codes look like TS-4821. Check the sealed card in your kit.'; return; }
+  if (!pick) { out.textContent = 'Choose A or B first.'; return; }
+  const digits = code.replace(/\D/g, '');
+  const answer = [...digits].reduce((s, d) => s + +d, 0) % 2 ? 'B' : 'A';
+  out.textContent = pick === answer
+    ? `You got it: plate ${answer} was Thoda Sa. Sharp palate.`
+    : `Plate ${answer} was Thoda Sa. You picked the one with sugar, which is exactly the point.`;
+});
+drawSizes(); drawCart();
 
 /* ---------- header ---------- */
 const bar = document.querySelector('.top');
@@ -253,7 +264,7 @@ if (!gsap || !ST || reduced) {
     if (f.classList.contains('hero-ph') || f.classList.contains('fill') || f.closest('.rail')) return;
     gsap.fromTo(f, { clipPath: 'inset(18% 8% 0% 8%)', opacity: 0.4 }, { clipPath: 'inset(0% 0% 0% 0%)', opacity: 1, duration: 1.2, ease: 'power3.out', scrollTrigger: { trigger: f, start: 'top 88%' } });
   });
-  gsap.utils.toArray('.steps li, .ing li:not(.swap), details, .gift, .card').forEach(el => {
+  gsap.utils.toArray('.steps li, .bt-steps li, .ing li:not(.swap), details, .gift, .card').forEach(el => {
     gsap.from(el, { y: 26, opacity: 0, duration: 0.8, ease: 'power3.out', scrollTrigger: { trigger: el, start: 'top 92%' } });
   });
 

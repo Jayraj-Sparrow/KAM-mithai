@@ -25,7 +25,7 @@
   <nav class="nav" aria-label="Main">
     <a class="logo" href="#top"><b>THODA SA</b><span class="deva">थोड़ा सा</span></a>
     <div class="links">
-      <a href="#recipe">Recipe</a><a href="#collection">Collection</a><a href="#proof">Proof</a><a href="#spot">Spot the Sugar</a><a href="#gifting">Gifting</a>
+      <a href="#recipe">Recipe</a><a href="#collection">Collection</a><a href="#proof">Proof</a><a href="#spot">Blind test</a><a href="#gifting">Gifting</a>
     </div>
     <div class="navr">
       <a class="btn small-btn accent" href="#shop">Reserve</a>
@@ -42,7 +42,7 @@
     <p class="kicker"><span class="deva">थोड़ा सा मीठा · अपनों के लिए</span></p>
     <h1 class="split">Thoda sa meetha, apno ke liye.</h1>
     <p class="lede">Classic Mysore Pak, slow-roasted in desi ghee the way it was in the Mysore palace kitchen. All the mithaas, no added sugar, and the proof printed on every box.</p>
-    <div class="ctas"><a class="btn accent" href="#shop">Reserve a box · ₹549</a><a class="btn" href="#spot">Spot the Sugar</a></div>
+    <div class="ctas"><a class="btn accent" href="#shop">Reserve a box · ₹549</a><a class="btn" href="#spot">Take the blind test</a></div>
   </div>
   <figure class="ph arch r45 hero-ph" data-art="box" data-accent="#E9A21B">
     <img src="assets/hero.jpg" alt="The white Thoda Sa Mysore Pak box with its arch window, beside a brass plate of sweets">
@@ -128,20 +128,37 @@
   </div>
 </section>
 
-<!-- 6 GAME -->
+<!-- 6 BLIND TEST -->
 <section class="game" id="spot">
-  <figure class="ph r32 game-ph" data-art="plates" data-accent="#B3261E">
-    <img src="assets/spot.jpg" alt="Two identical plates of Mysore Pak marked A and B" loading="lazy">
-  </figure>
+  <div class="bt-photo">
+    <figure class="ph r32 game-ph" data-art="plates" data-accent="#B3261E">
+      <img src="assets/spot.jpg" alt="Two identical plates of Mysore Pak tagged A and B" loading="lazy">
+    </figure>
+    <button class="hot" type="button" data-pick="A" style="left:24%;top:73%" aria-label="Guess plate A"><span>A</span></button>
+    <button class="hot" type="button" data-pick="B" style="left:70%;top:72%" aria-label="Guess plate B"><span>B</span></button>
+  </div>
   <div class="game-play">
-    <h2>Spot the Sugar.</h2>
-    <p class="muted">Three rounds. One plate has sugar, one has ours. Pick ours.</p>
-    <div class="plates">
-      <button class="plate" type="button" data-p="0" aria-label="Plate A"><i></i><em>A</em></button>
-      <button class="plate" type="button" data-p="1" aria-label="Plate B"><i></i><em>B</em></button>
+    <p class="eyebrow">The blind test</p>
+    <h2>One has sugar. One doesn't.</h2>
+    <p class="muted bt-lede" id="btLede">Tap the plate you think is ours.</p>
+    <ol class="bt-steps">
+      <li><b>Taste both.</b> Every kit has two unmarked pieces, A and B.</li>
+      <li><b>Pick one.</b> Decide which is made without sugar.</li>
+      <li><b>Check your answer.</b> Enter the code from the sealed card below.</li>
+    </ol>
+    <div class="bt-actions">
+      <button class="btn solid" type="button" id="kitBtn">Add a test kit · ₹99</button>
+      <span class="small" id="kitMsg" role="status"></span>
     </div>
-    <p id="gameMsg" class="game-msg" role="status">Round 1 of 3. Which one is ours?</p>
-    <button class="btn" type="button" id="gameReset">Play again</button>
+    <form class="bt-check" id="btForm">
+      <label>Kit code<input id="btCode" placeholder="e.g. TS-4821" autocomplete="off" maxlength="12"></label>
+      <fieldset class="bt-guess"><legend>Your guess</legend>
+        <label class="seg"><input type="radio" name="guess" value="A"><span>A</span></label>
+        <label class="seg"><input type="radio" name="guess" value="B"><span>B</span></label>
+      </fieldset>
+      <button class="btn" type="submit">Reveal</button>
+      <p class="bt-result" id="btResult" role="status"></p>
+    </form>
   </div>
 </section>
 
@@ -221,7 +238,7 @@
 <section class="faq" id="faq">
   <h2>Questions</h2>
   <details><summary>Is it safe for people with diabetes?</summary><p>There's no added sugar, but besan is a carbohydrate, so it still affects blood sugar. If you have diabetes, treat it like any treat and check with your doctor. Our glucose study results will be published here.</p></details>
-  <details><summary>Does it taste different?</summary><p>That's the whole point of Spot the Sugar. Try it at a pop-up or order a box and judge for yourself.</p></details>
+  <details><summary>Does it taste different?</summary><p>That is the whole point of the blind test. Try it at a pop-up or order a box and judge for yourself.</p></details>
   <details><summary>What is the sweetener?</summary><p>It's named on every box's ingredient list, with the amount per piece.</p></details>
   <details><summary>Where do you deliver?</summary><p>Across India by courier. Orders over ₹999 ship free.</p></details>
 </section>
