@@ -21,7 +21,7 @@ const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 /* ---------- collection rail ---------- */
 $('rail').innerHTML = SWEETS.map(s => `
   <article class="card" style="--c:${s.c}">
-    <figure class="ph r45" data-art="box" data-accent="${s.c}"><img src="assets/box-${s.slug}.jpg" alt="KAM ${esc(s.name)} box" loading="lazy"></figure>
+    <figure class="ph r45" data-art="box" data-accent="${s.c}"><img src="assets/box-${s.slug}.jpg" alt="Thoda Sa ${esc(s.name)} box" loading="lazy"></figure>
     <span class="rule"></span>
     <h3>${esc(s.name)}</h3>
     <div class="meta"><span class="deva">${esc(s.deva)}</span><span>${esc(s.status)}</span></div>
@@ -42,7 +42,7 @@ const ART = {
     <clipPath id="${id}"><path d="${archPath(120, 120, 160, 190)}"/></clipPath>
     <path d="${archPath(120, 120, 160, 190)}" fill="none" stroke="${a}" stroke-width="2"/>${lattice(120, 120, 160, 190, id)}
     <line x1="80" y1="372" x2="320" y2="372" stroke="${a}" stroke-width="3"/>
-    <text x="200" y="352" text-anchor="middle" font-family="Archivo, sans-serif" font-weight="800" font-size="20" letter-spacing="5" fill="${INK}">KAM</text>
+    <text x="200" y="352" text-anchor="middle" font-family="Archivo, sans-serif" font-weight="800" font-size="20" letter-spacing="4" fill="${INK}">THODA SA</text>
     <circle cx="300" cy="300" r="20" fill="none" stroke="#B3261E" stroke-width="1.3"/><circle cx="300" cy="300" r="15" fill="none" stroke="#B3261E" stroke-width=".7"/>`]; },
   piece: a => [400, 400, `
     <path d="M110 170 L230 130 L310 175 L190 220 Z" fill="none" stroke="${INK}" stroke-width="1.3"/>
@@ -161,8 +161,8 @@ $('checkoutForm').addEventListener('submit', e => {
   else if (!/^\d{6}$/.test(pin)) err = 'PIN code should be 6 digits.';
   else if (v('cEmail') && !$('cEmail').checkValidity()) err = 'That email looks incomplete.';
   $('cErr').textContent = err; if (err || !cart.length) return;
-  const t = totals(), oid = 'KAM-' + Date.now().toString(36).toUpperCase().slice(-6);
-  const text = [`New KAM order ${oid}`, ...cart.map(l => `${l.qty} × ${l.name} (${l.detail}) = ${inr(l.price * l.qty)}`), `Delivery: ${t.ship ? inr(t.ship) : 'Free'}`, `Total: ${inr(t.total)}`, '', `Name: ${v('cName')}`, `Mobile: ${phone}`, v('cEmail') ? `Email: ${v('cEmail')}` : '', `Address: ${v('cAddr')}, ${v('cCity')} ${pin}`, v('cNote') ? `Gift message: ${v('cNote')}` : ''].filter(Boolean).join('\n');
+  const t = totals(), oid = 'TS-' + Date.now().toString(36).toUpperCase().slice(-6);
+  const text = [`New Thoda Sa order ${oid}`, ...cart.map(l => `${l.qty} × ${l.name} (${l.detail}) = ${inr(l.price * l.qty)}`), `Delivery: ${t.ship ? inr(t.ship) : 'Free'}`, `Total: ${inr(t.total)}`, '', `Name: ${v('cName')}`, `Mobile: ${phone}`, v('cEmail') ? `Email: ${v('cEmail')}` : '', `Address: ${v('cAddr')}, ${v('cCity')} ${pin}`, v('cNote') ? `Gift message: ${v('cNote')}` : ''].filter(Boolean).join('\n');
   cart = []; persist(); drawCart(); $('checkoutForm').reset(); showDone(oid, text);
 });
 $('copyOrder').addEventListener('click', async () => {
@@ -183,7 +183,7 @@ $('bulkForm').addEventListener('submit', e => {
   const q = +$('bulkQty').value, phone = $('bulkPhone').value.replace(/\D/g, '');
   if (!$('bulkOrg').value.trim() || q < 25 || !$('bulkDate').value || phone.length < 10) { $('bulkErr').textContent = 'Fill in every field. Bulk orders start at 25.'; return; }
   $('bulkErr').textContent = '';
-  const oid = 'KAM-B' + Date.now().toString(36).toUpperCase().slice(-5);
+  const oid = 'TS-B' + Date.now().toString(36).toUpperCase().slice(-5);
   showDone(oid, `Bulk quote request ${oid}\nFor: ${$('bulkOrg').value.trim()}\nHow many: ${q}\nNeeded by: ${$('bulkDate').value}\nPhone: ${phone}`);
 });
 $('bulkDate').min = new Date(Date.now() + 7 * 864e5).toISOString().slice(0, 10);
@@ -191,7 +191,7 @@ $('bulkDate').min = new Date(Date.now() + 7 * 864e5).toISOString().slice(0, 10);
 /* ---------- Spot the Sugar ---------- */
 let round = 0, score = 0, answer = 0;
 const plates = [...document.querySelectorAll('.plate')];
-function newRound() { answer = Math.random() < 0.5 ? 0 : 1; plates.forEach(p => { p.disabled = false; p.classList.remove('right', 'wrong'); }); $('gameMsg').textContent = `Round ${round + 1} of 3. Which one is KAM?`; }
+function newRound() { answer = Math.random() < 0.5 ? 0 : 1; plates.forEach(p => { p.disabled = false; p.classList.remove('right', 'wrong'); }); $('gameMsg').textContent = `Round ${round + 1} of 3. Which one is ours?`; }
 plates.forEach(p => p.addEventListener('click', () => {
   if (p.disabled) return;
   const ok = +p.dataset.p === answer; if (ok) score += 1; round += 1;

@@ -17,7 +17,7 @@ Drop images here with these exact names. Until a file exists, the site shows a f
 | proof.jpg | 4:5 | Glucose sensor on an arm, piece in hand |
 | spot.jpg | 3:2 | Two identical plates marked A and B |
 | family.jpg | 4:5 | Grandfather and granddaughter sharing a piece |
-| gift-parents.jpg | 3:2 | Parents opening a KAM parcel at their door |
+| gift-parents.jpg | 3:2 | Parents opening a Thoda Sa parcel at their door |
 | gift-trunk.jpg | 3:2 | The open gift trunk with four sweets |
 | og.jpg | 1200 × 630 | Link preview image for WhatsApp/iMessage |
 

@@ -34,7 +34,7 @@ section{padding:clamp(64px,10vw,140px) max(5vw,18px)}
 /* intro */
 .intro{position:fixed;inset:0;z-index:100;background:var(--cream);display:grid;place-items:center}
 .intro-mark{display:grid;justify-items:center;gap:6px;text-align:center}
-.intro-mark .deva{font-size:64px;color:var(--kumkum);line-height:1}
+.intro-mark .deva{font-size:60px;color:var(--kumkum);line-height:1.1}
 .intro-mark b{font-family:Archivo,Inter,system-ui,sans-serif;font-stretch:125%;font-weight:800;font-size:28px;letter-spacing:.32em;padding-left:.32em}
 .intro-mark i{font-style:normal;font-size:14px;color:var(--muted);letter-spacing:.02em}
 .no-js .intro,.reduced .intro{display:none}
@@ -44,7 +44,7 @@ section{padding:clamp(64px,10vw,140px) max(5vw,18px)}
 .top.scrolled{border-bottom-color:var(--line)}
 .nav{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:10px 28px;padding:12px max(5vw,18px)}
 .logo{display:flex;align-items:baseline;gap:9px;text-decoration:none}
-.logo b{font-family:Archivo,Inter,system-ui,sans-serif;font-stretch:125%;font-weight:800;font-size:24px;letter-spacing:.14em}
+.logo b{font-family:Archivo,Inter,system-ui,sans-serif;font-stretch:125%;font-weight:800;font-size:22px;letter-spacing:.1em;white-space:nowrap}
 .logo .deva{font-size:21px;color:var(--kumkum)}
 .links{display:flex;flex-wrap:wrap;gap:4px 26px;font-size:15px}
 .links a{text-decoration:none;padding:10px 0;position:relative}
@@ -201,9 +201,9 @@ details{border-top:1px solid var(--line);padding:18px 0}
 summary{cursor:pointer;font-weight:600;font-size:19px;min-height:44px;display:flex;align-items:center}
 details p{color:var(--muted);margin-top:8px;max-width:62ch}
 .site-foot{background:var(--cream);padding:clamp(56px,8vw,110px) max(5vw,18px) 34px;overflow:hidden}
-.foot-mark{display:flex;align-items:baseline;gap:3vw;line-height:.8}
-.foot-mark b{font-family:Archivo,Inter,system-ui,sans-serif;font-stretch:125%;font-weight:800;font-size:clamp(90px,22vw,340px);letter-spacing:.04em}
-.foot-mark .deva{font-size:clamp(60px,13vw,200px);color:var(--kumkum)}
+.foot-mark{display:flex;flex-wrap:wrap;align-items:baseline;gap:1vw 3vw;line-height:.85}
+.foot-mark b{font-family:Archivo,Inter,system-ui,sans-serif;font-stretch:125%;font-weight:800;font-size:clamp(54px,12vw,190px);letter-spacing:.02em}
+.foot-mark .deva{font-size:clamp(44px,8vw,130px);color:var(--kumkum)}
 .foot-row{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px 30px;border-top:1px solid var(--line);margin-top:34px;padding-top:20px;font-size:14px;color:var(--muted)}
 
 /* sheets */

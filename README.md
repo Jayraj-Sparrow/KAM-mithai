@@ -1,6 +1,6 @@
-# KAM · The only thing kam is the sugar.
+# Thoda Sa · Thoda sa meetha, apno ke liye
 
-Concept website for KAM, a mithai brand with no added sugar. Plain HTML, CSS and JavaScript; animations use GSAP from a CDN. No build step.
+Concept website for Thoda Sa, a mithai brand with no added sugar. Plain HTML, CSS and JavaScript; animations use GSAP from a CDN. No build step.
 
 - `index.html` – the page
 - `styles.css` – look and layout
